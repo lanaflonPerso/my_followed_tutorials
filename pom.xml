@@ -129,5 +129,6 @@
         <module>reactor-core</module>
         <module>junit5</module>
         <module>swagger</module>
+        <module>spring-boot</module>
     </modules>
 </project>
