@@ -128,5 +128,6 @@
     <modules>
         <module>reactor-core</module>
         <module>junit5</module>
+        <module>swagger</module>
     </modules>
 </project>
