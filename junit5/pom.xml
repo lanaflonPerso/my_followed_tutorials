@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>junit5-assertions</module>
+        <module>junit5-baeldung</module>
     </modules>
 
     <dependencies>
