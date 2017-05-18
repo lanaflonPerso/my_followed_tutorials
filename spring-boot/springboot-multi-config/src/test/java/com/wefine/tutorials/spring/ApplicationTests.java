@@ -1,6 +1,7 @@
-package com.wefine.tutorials.app;
+package com.wefine.tutorials.spring;
 
-import com.wefine.tutorials.app.web.HelloController;
+import com.wefine.tutorials.spring.web.HelloController;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(HelloController.class)
+@Slf4j
 public class ApplicationTests {
-
     @Autowired
     private MockMvc mvc;
 
@@ -27,4 +28,5 @@ public class ApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Hello World")));
     }
+
 }

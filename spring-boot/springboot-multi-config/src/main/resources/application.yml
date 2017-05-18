@@ -1,0 +1,11 @@
+foo:
+    enabled: true
+    counter: ${random.int[10,20]}
+    remote-address: 192.168.1.1
+    security:
+        name: admin
+        password: 中文码
+
+spring:
+    profiles:
+        active: default
