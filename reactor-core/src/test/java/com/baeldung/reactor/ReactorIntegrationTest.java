@@ -1,6 +1,6 @@
 package com.baeldung.reactor;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import reactor.core.publisher.ConnectableFlux;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ReactorIntegrationTest {
 
     @Test
-    public void givenFlux_whenSubscribing_thenStream() throws InterruptedException {
+    void givenFlux_whenSubscribing_thenStream() throws InterruptedException {
 
         List<Integer> elements = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenFlux_whenZipping_thenCombine() {
+    void givenFlux_whenZipping_thenCombine() {
         List<String> elements = new ArrayList<>();
 
         Flux.just(1, 2, 3, 4)
@@ -48,7 +48,7 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenFlux_whenApplyingBackPressure_thenPushElementsInBatches() throws InterruptedException {
+    void givenFlux_whenApplyingBackPressure_thenPushElementsInBatches() throws InterruptedException {
 
         List<Integer> elements = new ArrayList<>();
 
@@ -89,7 +89,7 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenFlux_whenInParallel_thenSubscribeInDifferentThreads() throws InterruptedException {
+    void givenFlux_whenInParallel_thenSubscribeInDifferentThreads() throws InterruptedException {
         List<String> threadNames = new ArrayList<>();
 
         Flux.just(1, 2, 3, 4)
@@ -104,7 +104,7 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenConnectableFlux_whenConnected_thenShouldStream() {
+    void givenConnectableFlux_whenConnected_thenShouldStream() {
 
         List<Integer> elements = new ArrayList<>();
 

@@ -11,11 +11,15 @@
 
     <artifactId>reactor-core</artifactId>
 
+    <properties>
+        <reactor.version>3.1.0.M1</reactor.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>3.1.0.M1</version>
+            <version>${reactor.version}</version>
         </dependency>
 
         <dependency>
