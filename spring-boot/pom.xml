@@ -101,6 +101,7 @@
     <modules>
         <module>springboot-getstart</module>
         <module>springboot-multi-config</module>
+        <module>springboot-rest-getstart</module>
     </modules>
 
 </project>
