@@ -5,6 +5,7 @@ import com.ecwid.consul.v1.ConsulClient;
 import com.ecwid.consul.v1.QueryParams;
 import com.ecwid.consul.v1.Response;
 import com.ecwid.consul.v1.agent.model.NewService;
+import com.ecwid.consul.v1.agent.model.Service;
 import com.ecwid.consul.v1.health.model.HealthService;
 import com.ecwid.consul.v1.kv.model.GetValue;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 class ConsulClientTest {
     private ConsulClient client;
@@ -81,6 +83,13 @@ class ConsulClientTest {
 
         newService2.setCheck(serviceCheck);
         client.agentServiceRegister(newService2);
+    }
+
+    @Test
+    void test_get_all_service() {
+        final Response<Map<String, Service>> agentServices = client.getAgentServices();
+
+        agentServices.getValue().entrySet().forEach(System.out::println);
     }
 
     @Test
