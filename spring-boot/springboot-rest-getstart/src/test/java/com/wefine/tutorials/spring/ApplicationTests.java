@@ -2,15 +2,16 @@ package com.wefine.tutorials.spring;
 
 import com.wefine.tutorials.spring.web.HelloController;
 import com.wefine.tutorials.spring.web.UserController;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -19,14 +20,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = {
-        HelloController.class,
-        UserController.class
-})
+@SpringBootTest
 public class ApplicationTests {
 
-    @Autowired
     private MockMvc mvc;
+
+    @Before
+    public void setUp() throws Exception {
+        mvc = MockMvcBuilders.standaloneSetup(
+                new HelloController(),
+                new UserController()).build();
+    }
 
     @Test
     public void getHello() throws Exception {
@@ -37,7 +41,7 @@ public class ApplicationTests {
 
     @Test
     public void testUserController() throws Exception {
-//  	测试UserController
+        // 测试UserController
         RequestBuilder request = null;
 
         // 1、get查一下user列表，应该为空
