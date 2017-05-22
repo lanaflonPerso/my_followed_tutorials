@@ -152,5 +152,6 @@
         <module>junit5</module>
         <module>swagger</module>
         <module>spring-boot</module>
+        <module>consul</module>
     </modules>
 </project>
