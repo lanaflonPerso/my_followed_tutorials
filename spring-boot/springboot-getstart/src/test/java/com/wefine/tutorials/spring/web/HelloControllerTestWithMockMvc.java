@@ -1,4 +1,4 @@
-package com.wefine.tutorials.spring;
+package com.wefine.tutorials.spring.web;
 
 import com.wefine.tutorials.spring.web.HelloController;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(HelloController.class)
-public class ApplicationTests {
+public class HelloControllerTestWithMockMvc {
 
     @Autowired
     private MockMvc mvc;
