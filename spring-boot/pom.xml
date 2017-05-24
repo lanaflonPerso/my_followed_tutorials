@@ -16,6 +16,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <springboot.version>1.5.3.RELEASE</springboot.version>
+
+        <thymeleaf.version>3.0.6.RELEASE</thymeleaf.version>
+        <thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
     </properties>
 
     <dependencies>
@@ -102,6 +105,7 @@
         <module>springboot-getstart</module>
         <module>springboot-multi-config</module>
         <module>springboot-rest-getstart</module>
+        <module>springboot-web-thymeleaf3</module>
     </modules>
 
 </project>
