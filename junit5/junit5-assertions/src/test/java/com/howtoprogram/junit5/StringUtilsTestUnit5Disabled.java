@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 @RunWith(JUnitPlatform.class)
-public class StringUtilsTestUnit5Disabled {
+class StringUtilsTestUnit5Disabled {
 
     @Test
-    public void testConcatWithRegularInput() {
+    void testConcatWithRegularInput() {
         String st1 = "Hello";
         String st2 = "World";
         String st3 = "!";
@@ -23,7 +23,7 @@ public class StringUtilsTestUnit5Disabled {
 
     @Disabled
     @Test
-    public void testConcatWithNullInput() {
+    void testConcatWithNullInput() {
         String st1 = "Hello";
         String st2 = "World";
         String st3 = null;
@@ -33,7 +33,7 @@ public class StringUtilsTestUnit5Disabled {
     }
 
     @Test
-    public void testConcatWithAllNullInput() {
+    void testConcatWithAllNullInput() {
         String actual = StringUtils.concat();
         assertNull(actual);
     }

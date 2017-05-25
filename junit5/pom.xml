@@ -14,9 +14,22 @@
     <modules>
         <module>junit5-assertions</module>
         <module>junit5-baeldung</module>
+        <module>junit5-assumptions</module>
+        <module>junit5-dynamic-test</module>
+        <module>junit5-exception-testing</module>
+        <module>junit5-nested-test</module>
+        <module>junit5-parameter-resolution</module>
+        <module>junit5-tag-filter</module>
+        <module>junit5-test-suite</module>
+        <module>junit5-timeout</module>
     </modules>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>

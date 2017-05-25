@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Disabled
 @RunWith(JUnitPlatform.class)
-public class StringUtilsTestUnit5 {
+class StringUtilsTestUnit5 {
 
     @Test
     void testConvertToDoubleOK() {
