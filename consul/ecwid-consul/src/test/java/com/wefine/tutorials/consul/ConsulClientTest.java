@@ -6,15 +6,13 @@ import com.ecwid.consul.v1.QueryParams;
 import com.ecwid.consul.v1.Response;
 import com.ecwid.consul.v1.agent.model.NewService;
 import com.ecwid.consul.v1.agent.model.Service;
+import com.ecwid.consul.v1.health.model.Check;
 import com.ecwid.consul.v1.health.model.HealthService;
 import com.ecwid.consul.v1.kv.model.GetValue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class ConsulClientTest {
     private ConsulClient client;
@@ -34,6 +32,12 @@ class ConsulClientTest {
         client.setKVValue("com.my.app.bar", "bar");
         client.setKVValue("com.your.app.foo", "hello");
         client.setKVValue("com.your.app.bar", "world");
+        client.setKVValue("city-1", "a1");
+        client.setKVValue("city-2", "a2");
+        client.setKVValue("city/a1", "a2");
+        client.setKVValue("city/a2", "a2");
+
+        client.setKVValue("foo/bar/baz", "1");
     }
 
     @Test
@@ -95,12 +99,23 @@ class ConsulClientTest {
     @Test
     void test_health_check() {
         // 根据服务名查询
-        Response<List<HealthService>> healthyServices1 = client.getHealthServices("myapp", true, QueryParams.DEFAULT);
+        Response<List<HealthService>> healthyServices1 = client.getHealthServices("a3-auto-sdk", true, QueryParams.DEFAULT);
         System.out.println("healthyServices1:" + healthyServices1);
 
         // 根据服务名和标记查询
         Response<List<HealthService>> healthyServices2 = client.getHealthServices("myapp", "EU-West", true, QueryParams.DEFAULT);
         System.out.println("healthyServices2:" + healthyServices2);
+    }
+
+    @Test
+    void test_watch() {
+        QueryParams queryParams = new QueryParams(500, 500);
+
+        System.out.println(new Date());
+        // /v1/health/checks/
+        Response<List<Check>> response = client.getHealthChecksForService("a3-auto-sdk", queryParams);
+
+        System.out.println(new Date());
     }
 
     @Test
