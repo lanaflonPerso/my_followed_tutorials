@@ -174,5 +174,6 @@
         <module>spring-boot</module>
         <module>consul</module>
         <module>annotations</module>
+        <module>beetlsql</module>
     </modules>
 </project>
