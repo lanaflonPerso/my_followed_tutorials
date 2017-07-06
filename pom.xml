@@ -175,5 +175,6 @@
         <module>consul</module>
         <module>annotations</module>
         <module>beetlsql</module>
+        <module>caches</module>
     </modules>
 </project>
