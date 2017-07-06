@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>caches-ehcache2</module>
+        <module>caches-ehcache3-springboot</module>
     </modules>
 
 
