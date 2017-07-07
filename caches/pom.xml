@@ -14,6 +14,7 @@
     <modules>
         <module>caches-ehcache2</module>
         <module>caches-ehcache3-springboot</module>
+        <module>caches-springboot</module>
     </modules>
 
 
