@@ -176,5 +176,6 @@
         <module>annotations</module>
         <module>beetlsql</module>
         <module>caches</module>
+        <module>spring-proficient</module>
     </modules>
 </project>
