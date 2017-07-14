@@ -24,17 +24,18 @@ public class SnowFlake {
     private final static long MAX_MACHINE_NUM = ~(-1L << MACHINE_BIT);
     private final static long MAX_SEQUENCE = ~(-1L << SEQUENCE_BIT);
 
-    /**
-     * 每一部分向左的位移
-     */
+
+    // 机器ID偏左移12位
     private final static long MACHINE_LEFT = SEQUENCE_BIT;
+    // 数据中心ID左移17位
     private final static long DATA_CENTER_LEFT = SEQUENCE_BIT + MACHINE_BIT;
+    // 时间毫秒左移22位
     private final static long TIMESTAMP_LEFT = DATA_CENTER_LEFT + DATA_CENTER_BIT;
 
-    private long datacenterId;  //数据中心
-    private long machineId;     //机器标识
-    private long sequence = 0L; //序列号
-    private long lastStmp = -1L;//上一次时间戳
+    private long datacenterId;      //数据中心
+    private long machineId;         //机器标识
+    private long sequence = 0L;     //序列号
+    private long lastStamp = -1L;   //上一次时间戳
 
     public SnowFlake(long dcId, long mId) {
         if (dcId > MAX_DATA_CENTER_NUM || dcId < 0) {
@@ -53,26 +54,26 @@ public class SnowFlake {
      * @return long
      */
     public synchronized long nextId() {
-        long currStmp = currentMillis();
-        if (currStmp < lastStmp) {
+        long currStamp = currentMillis();
+        if (currStamp < lastStamp) {
             throw new RuntimeException("Clock moved backwards.  Refusing to generate id");
         }
 
-        if (currStmp == lastStmp) {
+        if (currStamp == lastStamp) {
             //相同毫秒内，序列号自增
             sequence = (sequence + 1) & MAX_SEQUENCE;
             //同一毫秒的序列数已经达到最大
             if (sequence == 0L) {
-                currStmp = nextMill();
+                currStamp = nextMill();
             }
         } else {
             //不同毫秒内，序列号置为0
             sequence = 0L;
         }
 
-        lastStmp = currStmp;
+        lastStamp = currStamp;
 
-        return (currStmp - START_STAMP) << TIMESTAMP_LEFT //时间戳部分
+        return (currStamp - START_STAMP) << TIMESTAMP_LEFT //时间戳部分
             | datacenterId << DATA_CENTER_LEFT       //数据中心部分
             | machineId << MACHINE_LEFT             //机器标识部分
             | sequence;                             //序列号部分
@@ -80,7 +81,7 @@ public class SnowFlake {
 
     private long nextMill() {
         long mill = currentMillis();
-        while (mill <= lastStmp) {
+        while (mill <= lastStamp) {
             mill = currentMillis();
         }
         return mill;
