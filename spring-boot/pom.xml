@@ -107,6 +107,7 @@
         <module>springboot-rest-getstart</module>
         <module>springboot-web-thymeleaf3</module>
         <module>springboot-swagger2</module>
+        <module>snow-flake</module>
     </modules>
 
 </project>
