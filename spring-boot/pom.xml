@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <springboot.version>1.5.3.RELEASE</springboot.version>
+        <springboot.version>1.5.4.RELEASE</springboot.version>
 
         <thymeleaf.version>3.0.6.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect.version>2.1.1</thymeleaf-layout-dialect.version>
@@ -106,6 +106,7 @@
         <module>springboot-multi-config</module>
         <module>springboot-rest-getstart</module>
         <module>springboot-web-thymeleaf3</module>
+        <module>springboot-swagger2</module>
     </modules>
 
 </project>
