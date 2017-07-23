@@ -178,5 +178,6 @@
         <module>caches</module>
         <module>spring-proficient</module>
         <module>maven</module>
+        <module>dockerfile</module>
     </modules>
 </project>
