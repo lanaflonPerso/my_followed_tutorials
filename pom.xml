@@ -177,5 +177,6 @@
         <module>beetlsql</module>
         <module>caches</module>
         <module>spring-proficient</module>
+        <module>maven</module>
     </modules>
 </project>
