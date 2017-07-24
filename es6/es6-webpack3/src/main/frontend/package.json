@@ -3,10 +3,13 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-        "start": "npm run webpack",
+        "start": "webpack-dev-server --inline --hot",
         "webpack": "webpack -d --watch"
     },
     "dependencies": {
         "webpack": "^3.3.0"
+    },
+    "devDependencies": {
+        "webpack-dev-server": "^2.6.1"
     }
 }
