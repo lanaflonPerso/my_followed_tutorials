@@ -179,5 +179,6 @@
         <module>spring-proficient</module>
         <module>maven</module>
         <module>dockerfile</module>
+        <module>es6</module>
     </modules>
 </project>
