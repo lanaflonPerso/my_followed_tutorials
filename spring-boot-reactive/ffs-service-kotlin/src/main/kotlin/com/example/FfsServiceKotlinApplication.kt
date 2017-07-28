@@ -80,7 +80,7 @@ class FluxFlixService(val movieRepository: MovieRepository) {
     }
 
     fun byId(id: String): Mono<Movie> {
-        return movieRepository.findOne(id)
+        return movieRepository.findById(id);
     }
 }
 
