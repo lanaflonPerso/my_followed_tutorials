@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -18,8 +19,12 @@ public class FfsClientApplication {
 
     @Bean
     WebClient webClient() {
-        return WebClient.create("http://localhost:8080/movies")
-                .filter(ExchangeFilterFunctions.basicAuthentication("jlong", "password"));
+
+        return WebClient.builder()
+                .baseUrl("http://localhost:8080/movies")
+                .filter(ExchangeFilterFunctions.basicAuthentication("jlong", "password"))
+                .build();
+
     }
 
     @Bean
