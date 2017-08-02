@@ -2,6 +2,7 @@ package xyz.howtoprogram.junit5.order;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
+import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 
 /**
@@ -10,15 +11,14 @@ import org.junit.jupiter.api.extension.ParameterResolver;
 public class EnvironmentNameParameterResolver implements ParameterResolver {
 
     @Override
-    public boolean supports(ParameterContext parameterContext, ExtensionContext extensionContext) {
+    public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
         //System.out.println(parameterContext.getParameter().getName());
         //return parameterContext.getParameter().getName()
         return false;
     }
 
     @Override
-    public Object resolve(ParameterContext parameterContext, ExtensionContext extensionContext) {
+    public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
         return new EnvironmentInfo();
     }
-
 }

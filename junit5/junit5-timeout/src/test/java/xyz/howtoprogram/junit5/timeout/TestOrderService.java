@@ -19,7 +19,7 @@ class TestOrderService {
         });
     }
 
-    @Test
+//    @Test
     void doPaymentExceed5Seconds() {
         OrderService orderService = new OrderService();
         assertTimeout(ofSeconds(5), () -> {
@@ -28,9 +28,10 @@ class TestOrderService {
         }, "The doPayment method take more than 5 seconds");
     }
 
-    @Test
+//    @Test
     void printShippingLabelExceeded15SecondsWithPreemptiveTermination() {
         OrderService orderService = new OrderService();
+
         assertTimeoutPreemptively(ofSeconds(15), () -> {
             // This method takes 20 seconds to run
             orderService.printShippingLabel();
