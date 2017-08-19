@@ -10,6 +10,7 @@
 
     <modules>
         <module>springboot-docker</module>
+        <module>springboot-jwt</module>
         <module>thymeleaf</module>
         <module>ffs-service</module>
         <module>ffs-client</module>
