@@ -9,6 +9,7 @@
     <modules>
         <module>springmvc</module>
         <module>springboot</module>
+        <module>mybatis-in-practice</module>
     </modules>
     <packaging>pom</packaging>
 	<name>mybatis</name>

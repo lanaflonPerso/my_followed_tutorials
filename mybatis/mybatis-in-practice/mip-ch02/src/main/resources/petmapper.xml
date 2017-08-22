@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="petmapper">
+    <!-- Add SQL statements -->
+    <select id="getAllPets" resultType="PetDVO">
+        SELECT
+            id,
+            name,
+            owner,
+            species,
+            sex,
+            birth,
+            death
+        FROM pet
+    </select>
+
+    <select id="getPetObject" parameterType="java.lang.String"
+            resultType="PetDVO">
+        SELECT
+            id,
+            name,
+            owner,
+            species,
+            sex,
+            birth,
+            death
+        FROM pet
+        WHERE name = #{name}
+    </select>
+
+    <select id="getAllSpecies" resultType="java.lang.String">
+        SELECT DISTINCT (SPECIES) AS species
+        FROM pet
+    </select>
+
+    <select id="selectPets" parameterType="java.lang.String"
+            resultMap="petResultMap">
+        SELECT
+            id,
+            name,
+            owner,
+            species,
+            sex,
+            birth,
+            death
+        FROM pet
+        WHERE sex = #{sex}
+    </select>
+
+    <insert id="createPet" parameterType="java.util.Map">
+        INSERT INTO pet
+        (name, owner, species, sex, birth)
+        VALUES
+        (#{name}, #{owner}, #{species}, #{sex}, #{birth} )
+
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="updatePetData" parameterType="java.util.Map">
+        UPDATE pet p
+        SET p.birth = #{birth}, p.sex = #{sex}
+        WHERE p.name = #{name}
+    </update>
+
+    <delete id="deletePet" parameterType="java.util.Map">
+        DELETE FROM pet
+        WHERE
+            name = #{name}
+            AND
+            species = #{species}
+    </delete>
+
+    <resultMap id="petResultMap" type="PetDVO">
+        <id property="sex" column="sex"/>
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="owner" column="owner"/>
+        <result property="species" column="species"/>
+        <result property="birth" column="birth"/>
+        <result property="death" column="death"/>
+    </resultMap>
+</mapper>
