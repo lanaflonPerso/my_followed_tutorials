@@ -75,8 +75,8 @@
     </delete>
 
     <resultMap id="petResultMap" type="PetDVO">
-        <id property="sex" column="sex"/>
-        <result property="id" column="id"/>
+        <id property="id" column="id"/>
+        <result property="sex" column="sex"/>
         <result property="name" column="name"/>
         <result property="owner" column="owner"/>
         <result property="species" column="species"/>
