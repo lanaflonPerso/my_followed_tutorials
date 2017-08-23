@@ -14,6 +14,7 @@
     <modules>
         <module>mip-ch02</module>
         <module>mip-ch02-spring</module>
+        <module>mip-ch02-spring-generator</module>
     </modules>
 
     <dependencies>

@@ -7,7 +7,7 @@ CREATE DATABASE IF NOT EXISTS mip
 USE mip;
 
 CREATE TABLE pet (
-    id      INT NOT NULL AUTO_INCREMENT,
+    id      BIGINT NOT NULL AUTO_INCREMENT,
     name    VARCHAR(32),
     owner   VARCHAR(32),
     species VARCHAR(32),
@@ -20,7 +20,7 @@ CREATE TABLE pet (
     DEFAULT CHARSET = utf8;
 
 CREATE TABLE dept (
-    id       INT      NOT NULL AUTO_INCREMENT,
+    id       BIGINT   NOT NULL AUTO_INCREMENT,
     name     CHAR(32) NULL,
     loc_name CHAR(32) NULL,
     PRIMARY KEY (id)
@@ -29,10 +29,10 @@ CREATE TABLE dept (
     DEFAULT CHARSET = utf8;
 
 CREATE TABLE employee (
-    id     INT         NOT NULL AUTO_INCREMENT,
+    id     BIGINT      NOT NULL AUTO_INCREMENT,
     name   VARCHAR(32) NOT NULL,
     salary INT,
-    dep_id INT         NOT NULL,
+    dep_id BIGINT      NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT FK_EMP_DEPT FOREIGN KEY (dep_id) REFERENCES dept (id)
 )
@@ -51,7 +51,7 @@ INSERT INTO employee VALUES
     (104, 'DeAnne Shaw', 10000, 3);
 
 CREATE TABLE user (
-    id         INT      NOT NULL AUTO_INCREMENT,
+    id         BIGINT   NOT NULL AUTO_INCREMENT,
     first_name CHAR(32) NULL,
     last_name  CHAR(32) NULL,
     PRIMARY KEY (id)
