@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="petmapper">
     <!-- Add SQL statements -->
@@ -73,6 +73,49 @@
             AND
             species = #{species}
     </delete>
+
+    <select id="findAllSnakes" parameterType="PetDVO" resultType="PetDVO">
+        SELECT * FROM Pet WHERE species = #{species}
+        <if test="sex != null">
+            AND sex = #{sex}
+        </if>
+        <if test="owner != null">
+            AND owner like #{owner}
+        </if>
+    </select>
+
+    <select id="findSnakePets" parameterType="PetDVO" resultType="PetDVO">
+        SELECT * FROM Pet WHERE species = #{species}
+        <choose>
+            <when test="sex != null">
+                AND sex = #{sex}
+            </when>
+            <when test="owner != null">
+                AND owner like #{owner}
+            </when>
+            <otherwise>
+                AND name like 'Slim%'
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectPetsIn" resultType="PetDVO">
+        SELECT * FROM Pet P WHERE species IN
+        <foreach item="item" index="index" collection="speciesList"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <update id="updatePetDynamically" parameterType="java.util.Map">
+        UPDATE Pet
+        <set>
+            <if test="birth != null">birth=#{birth},</if>
+            <if test="death != null">death=#{death},</if>
+            <if test="sex != null">sex=#{sex}</if>
+        </set>
+        WHERE name=#{name}
+    </update>
 
     <resultMap id="petResultMap" type="PetDVO">
         <id property="id" column="id"/>

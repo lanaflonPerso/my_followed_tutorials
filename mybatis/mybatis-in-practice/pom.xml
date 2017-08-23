@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mip-ch02</module>
+        <module>mip-ch02-spring</module>
     </modules>
 
     <dependencies>
