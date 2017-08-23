@@ -98,4 +98,11 @@
         loc_name = #{locName,jdbcType=CHAR}
         WHERE id = #{id,jdbcType=BIGINT}
     </update>
+
+    <select id="findAll" resultType="com.wefine.mybatis.entity.Dept">
+        select
+        <include refid="Base_Column_List"/>
+        from dept
+    </select>
+
 </mapper>

@@ -31,6 +31,7 @@
         from pet
         where id = #{id,jdbcType=BIGINT}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         <!--
           WARNING - @mbg.generated
@@ -146,4 +147,10 @@
         death = #{death,jdbcType=DATE}
         where id = #{id,jdbcType=BIGINT}
     </update>
+
+    <select id="findAll" resultType="com.wefine.mybatis.entity.Pet">
+        select
+        <include refid="Base_Column_List"/>
+        from pet
+    </select>
 </mapper>
