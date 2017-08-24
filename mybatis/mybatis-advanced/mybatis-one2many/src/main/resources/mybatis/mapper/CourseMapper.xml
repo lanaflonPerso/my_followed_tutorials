@@ -15,13 +15,19 @@
         <result column="end_date" property="endDate"/>
     </resultMap>
 
-    <select id="selectCoursesByTutor" parameterType="int" resultMap="CourseResult">
+    <select id="findById" parameterType="Long" resultMap="CourseResult">
+        SELECT *
+        FROM course
+        WHERE course_id = #{courseId}
+    </select>
+
+    <select id="findByTutorId" parameterType="Long" resultMap="CourseResult">
         SELECT *
         FROM course
         WHERE tutor_id = #{tutorId}
     </select>
 
-    <select id="searchCourses" parameterType="hashmap" resultMap="CourseResult" useCache="false">
+    <select id="searchCourses" parameterType="HashMap" resultMap="CourseResult" useCache="false">
         SELECT * FROM COURSE
         WHERE TUTOR_ID= #{tutorId}
         <if test="courseName != null">
@@ -36,7 +42,7 @@
 
     </select>
 
-    <select id="searchCoursesByTutors" parameterType="hashmap" resultMap="CourseResult">
+    <select id="searchCoursesByTutors" parameterType="HashMap" resultMap="CourseResult">
         SELECT * FROM COURSE
         <if test="tutorIds != null">
             <where>

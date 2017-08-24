@@ -17,7 +17,7 @@ public class AddressMapperTests {
 
     @Test
     public void test() {
-        Address address = mapper.findAddressById(1L);
+        Address address = mapper.findById(1L);
 
         System.out.println(address);
     }

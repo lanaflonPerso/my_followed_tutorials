@@ -9,7 +9,9 @@ import java.util.Map;
 @Mapper
 public interface CourseMapper {
 
-    List<Course> selectCoursesByTutor(int tutorId);
+    List<Course> findByTutorId(Long tutorId);
+
+    Course findById(Long courseId);
 
     List<Course> searchCourses(Map<String, Object> map);
 

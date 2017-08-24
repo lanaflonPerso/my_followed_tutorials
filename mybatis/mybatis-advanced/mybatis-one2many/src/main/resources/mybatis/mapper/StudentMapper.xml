@@ -21,11 +21,11 @@
         <result property="address.country" column="country"/>
     </resultMap>
 
-    <resultMap type="com.wefine.mybatis.entity.Student" id="StudentWithAddressNestedSelect">
+    <resultMap type="com.wefine.mybatis.entity.Student" id="StudentWithAddress">
         <id property="studId" column="stud_id"/>
         <result property="name" column="name"/>
         <result property="email" column="email"/>
-        <association property="address" column="addr_id" select="com.mybatis3.mappers.AddressMapper.selectAddressById"/>
+        <association property="address" column="addr_id" select="com.wefine.mybatis.mapper.AddressMapper.findById"/>
     </resultMap>
 
     <resultMap type="com.wefine.mybatis.entity.Student" id="StudentWithAddressNestedResultMap">
@@ -42,12 +42,12 @@
         </association>
     </resultMap>
 
-    <select id="findAllStudents" resultMap="StudentResult">
+    <select id="findAll" resultMap="StudentResult">
         SELECT *
         FROM student
     </select>
 
-    <select id="findStudentById" parameterType="Long" resultMap="StudentWithAddressNestedSelect">
+    <select id="findById" parameterType="Long" resultMap="StudentWithAddress">
         SELECT *
         FROM student
         WHERE stud_id = #{studId}

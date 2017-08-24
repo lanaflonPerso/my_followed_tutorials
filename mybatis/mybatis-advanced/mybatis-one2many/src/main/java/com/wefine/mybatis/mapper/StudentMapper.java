@@ -9,9 +9,9 @@ import java.util.Map;
 @Mapper
 public interface StudentMapper {
 
-    List<Student> findAllStudents();
+    List<Student> findAll();
 
-    Student findStudentById(Integer id);
+    Student findById(Long id);
 
     Student selectStudentWithAddress(int id);
 
@@ -21,5 +21,5 @@ public interface StudentMapper {
 
     void updateStudent(Student student);
 
-    int deleteStudent(int id);
+    int deleteStudent(Long id);
 }
