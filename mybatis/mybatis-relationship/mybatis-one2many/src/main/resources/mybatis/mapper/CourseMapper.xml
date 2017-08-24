@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wefine.mybatis.mapper.CourseMapper">
+
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="false"/>
+
+    <resultMap id="CourseResult" type="com.wefine.mybatis.entity.Course">
+        <id column="course_id" property="courseId"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+    </resultMap>
+
+    <select id="selectCoursesByTutor" parameterType="int" resultMap="CourseResult">
+        SELECT *
+        FROM course
+        WHERE tutor_id = #{tutorId}
+    </select>
+
+    <select id="searchCourses" parameterType="hashmap" resultMap="CourseResult" useCache="false">
+        SELECT * FROM COURSE
+        WHERE TUTOR_ID= #{tutorId}
+        <if test="courseName != null">
+            AND name like #{courseName}
+        </if>
+        <if test="startDate != null">
+            AND start_date &gt;= #{startDate}
+        </if>
+        <if test="endDate != null">
+            AND end_date &lt;= #{endDate}
+        </if>
+
+    </select>
+
+    <select id="searchCoursesByTutors" parameterType="hashmap" resultMap="CourseResult">
+        SELECT * FROM COURSE
+        <if test="tutorIds != null">
+            <where>
+                tutor_id IN
+                <foreach item="tutorId" collection="tutorIds"
+                         open="(" separator="," close=")">
+                    #{tutorId}
+                </foreach>
+            </where>
+        </if>
+    </select>
+
+</mapper>
