@@ -23,7 +23,7 @@ public class DeptMapperTest {
     private DeptMapper mapper;
 
     @Test
-    public void test01CreatePet() throws Exception {
+    public void test01FindAll() throws Exception {
         List<Dept> depts = mapper.findAll();
 
         System.out.println(depts);

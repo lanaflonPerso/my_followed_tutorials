@@ -3,10 +3,6 @@
         "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
-
-    <!-- !!!! Driver Class Path !!!! -->
-    <classPathEntry location="E:\mvn_repo\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar"/>
-
     <context id="context" targetRuntime="MyBatis3">
         <property name="javaFileEncoding" value="UTF-8" />
 
