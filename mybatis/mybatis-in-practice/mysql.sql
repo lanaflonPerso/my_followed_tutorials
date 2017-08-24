@@ -39,12 +39,12 @@ CREATE TABLE employee (
     ENGINE = InnoDB
     DEFAULT CHARSET = utf8;
 
-INSERT INTO dept VALUES
+INSERT INTO dept (id, name, loc_name) VALUES
     (1, 'IT', 'Arizona'),
     (2, 'Servicing', 'IOWA'),
     (3, 'Technology', 'TEXAS');
 
-INSERT INTO employee VALUES
+INSERT INTO employee (id, name, salary, dep_id) VALUES
     (101, 'John Smith', 10000, 1),
     (102, 'John Sims', 10000, 1),
     (103, 'John McCoy', 10000, 2),

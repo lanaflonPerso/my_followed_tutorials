@@ -28,6 +28,7 @@
         from employee
         where id = #{id,jdbcType=BIGINT}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         <!--
           WARNING - @mbg.generated
@@ -111,4 +112,10 @@
         dep_id = #{depId,jdbcType=BIGINT}
         where id = #{id,jdbcType=BIGINT}
     </update>
+
+    <select id="findAll" resultType="com.wefine.mybatis.entity.Employee">
+        select
+        *
+        from employee
+    </select>
 </mapper>
