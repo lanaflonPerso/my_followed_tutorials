@@ -5,57 +5,21 @@
 
 <mapper namespace="com.wefine.mybatis.mapper.TutorMapper">
 
-    <resultMap type="com.wefine.mybatis.entity.Tutor" id="TutorWithCoursesNestedResult">
-        <id column="id" property="id"/>
-        <result column="tutor_name" property="name"/>
-        <result column="email" property="email"/>
-        <association property="address" resultMap="com.wefine.mybatis.mapper.AddressMapper.AddressResult"/>
-        <collection property="courses" resultMap="com.wefine.mybatis.mapper.CourseMapper.CourseResult"/>
-    </resultMap>
-
     <resultMap type="com.wefine.mybatis.entity.Tutor" id="TutorWithCoursesNestedSelect">
         <id column="id" property="id"/>
-        <result column="tutor_name" property="name"/>
+        <result column="name" property="name"/>
         <result column="email" property="email"/>
-        <association property="address" resultMap="com.mybatis3.mappers.AddressMapper.AddressResult"/>
-        <collection property="courses" column="tutor_id"
-                    select="com.mybatis3.mappers.CourseMapper.selectCoursesByTutor"/>
+        <association property="address" column="addr_id"
+                     select="com.wefine.mybatis.mapper.AddressMapper.findById"/>
+        <collection property="courses" column="id"
+                    select="com.wefine.mybatis.mapper.CourseMapper.findByTutorId"/>
     </resultMap>
 
-    <select id="selectTutorById" parameterType="int" resultMap="TutorWithCoursesNestedResult">
+    <select id="findWithRefById" parameterType="Long" resultMap="TutorWithCoursesNestedSelect">
         SELECT
-            t.id,
-            t.name AS tutor_name,
-            email,
-            a.id,
-            street,
-            city,
-            state,
-            zip,
-            country,
-            c.id,
-            c.name,
-            description,
-            start_date,
-            end_date
-        FROM tutor t LEFT OUTER JOIN address a ON t.addr_id = a.id
-            LEFT OUTER JOIN course c ON t.id = c.tutor_id
-        WHERE t.id = #{tutorId}
-    </select>
-
-    <select id="selectTutorWithCourses" parameterType="int" resultMap="TutorWithCoursesNestedSelect">
-        SELECT
-            t.id,
-            t.name AS tutor_name,
-            email,
-            a.id,
-            street,
-            city,
-            state,
-            zip,
-            country
-        FROM tutor t LEFT OUTER JOIN address a ON t.addr_id = a.id
-        WHERE t.id = #{tutorId}
+            *
+        FROM tutor
+        WHERE id = #{tutorId}
     </select>
 
 </mapper>

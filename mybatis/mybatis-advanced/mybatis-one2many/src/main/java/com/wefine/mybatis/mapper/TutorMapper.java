@@ -6,7 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface TutorMapper {
 
-    Tutor selectTutorWithCourses(int id);
-
-    Tutor selectTutorById(int id);
+    Tutor findWithRefById(Long id);
 }
