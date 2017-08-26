@@ -6,7 +6,7 @@
 <mapper namespace="com.wefine.mybatis.mapper.AddressMapper">
 
     <resultMap id="AddressResult" type="com.wefine.mybatis.entity.Address">
-        <id property="addrId" column="addr_id"/>
+        <id property="id" column="id"/>
         <result property="street" column="street"/>
         <result property="city" column="city"/>
         <result property="state" column="state"/>
@@ -17,7 +17,7 @@
     <select id="findById" parameterType="Long" resultMap="AddressResult">
         SELECT *
         FROM address
-        WHERE addr_id = #{addrId}
+        WHERE id = #{id}
     </select>
 
 </mapper>

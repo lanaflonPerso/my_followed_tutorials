@@ -11,7 +11,7 @@ import java.io.Serializable;
 @ToString
 public class Student implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Long studId;
+    private Long id;
     private String name;
     private String email;
     private PhoneNumber phone;

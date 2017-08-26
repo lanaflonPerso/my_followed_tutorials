@@ -6,7 +6,7 @@
 <mapper namespace="com.wefine.mybatis.mapper.TutorMapper">
 
     <resultMap type="com.wefine.mybatis.entity.Tutor" id="TutorWithCoursesNestedResult">
-        <id column="tutor_id" property="tutorId"/>
+        <id column="id" property="id"/>
         <result column="tutor_name" property="name"/>
         <result column="email" property="email"/>
         <association property="address" resultMap="com.wefine.mybatis.mapper.AddressMapper.AddressResult"/>
@@ -14,7 +14,7 @@
     </resultMap>
 
     <resultMap type="com.wefine.mybatis.entity.Tutor" id="TutorWithCoursesNestedSelect">
-        <id column="tutor_id" property="tutorId"/>
+        <id column="id" property="id"/>
         <result column="tutor_name" property="name"/>
         <result column="email" property="email"/>
         <association property="address" resultMap="com.mybatis3.mappers.AddressMapper.AddressResult"/>
@@ -24,38 +24,38 @@
 
     <select id="selectTutorById" parameterType="int" resultMap="TutorWithCoursesNestedResult">
         SELECT
-            t.tutor_id,
+            t.id,
             t.name AS tutor_name,
             email,
-            a.addr_id,
+            a.id,
             street,
             city,
             state,
             zip,
             country,
-            course_id,
+            c.id,
             c.name,
             description,
             start_date,
             end_date
-        FROM tutor t LEFT OUTER JOIN address a ON t.addr_id = a.addr_id
-            LEFT OUTER JOIN course c ON t.tutor_id = c.tutor_id
-        WHERE t.tutor_id = #{tutorId}
+        FROM tutor t LEFT OUTER JOIN address a ON t.addr_id = a.id
+            LEFT OUTER JOIN course c ON t.id = c.tutor_id
+        WHERE t.id = #{tutorId}
     </select>
 
     <select id="selectTutorWithCourses" parameterType="int" resultMap="TutorWithCoursesNestedSelect">
         SELECT
-            t.tutor_id,
+            t.id,
             t.name AS tutor_name,
             email,
-            a.addr_id,
+            a.id,
             street,
             city,
             state,
             zip,
             country
-        FROM tutor t LEFT OUTER JOIN address a ON t.addr_id = a.addr_id
-        WHERE t.tutor_id = #{tutorId}
+        FROM tutor t LEFT OUTER JOIN address a ON t.addr_id = a.id
+        WHERE t.id = #{tutorId}
     </select>
 
 </mapper>

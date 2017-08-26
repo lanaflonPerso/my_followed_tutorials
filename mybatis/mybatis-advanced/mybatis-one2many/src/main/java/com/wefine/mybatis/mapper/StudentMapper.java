@@ -11,9 +11,11 @@ public interface StudentMapper {
 
     List<Student> findAll();
 
+    List<Student> findAllWithRef();
+
     Student findById(Long id);
 
-    Student selectStudentWithAddress(int id);
+    Student findByIdWithRef(Long id);
 
     void insertStudent(Student student);
 

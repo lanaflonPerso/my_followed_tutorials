@@ -6,34 +6,22 @@
 <mapper namespace="com.wefine.mybatis.mapper.StudentMapper">
 
     <resultMap type="com.wefine.mybatis.entity.Student" id="StudentResult">
-        <id property="studId" column="stud_id"/>
+        <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="email" column="email"/>
         <result property="phone" column="phone"/>
     </resultMap>
 
-    <resultMap type="com.wefine.mybatis.entity.Student" id="StudentWithAddressExtResult" extends="StudentResult">
-        <result property="address.addrId" column="addr_id"/>
-        <result property="address.street" column="street"/>
-        <result property="address.city" column="city"/>
-        <result property="address.state" column="state"/>
-        <result property="address.zip" column="zip"/>
-        <result property="address.country" column="country"/>
-    </resultMap>
-
-    <resultMap type="com.wefine.mybatis.entity.Student" id="StudentWithAddress">
-        <id property="studId" column="stud_id"/>
-        <result property="name" column="name"/>
-        <result property="email" column="email"/>
+    <resultMap type="com.wefine.mybatis.entity.Student" id="StudentWithAddress" extends="StudentResult">
         <association property="address" column="addr_id" select="com.wefine.mybatis.mapper.AddressMapper.findById"/>
     </resultMap>
 
     <resultMap type="com.wefine.mybatis.entity.Student" id="StudentWithAddressNestedResultMap">
-        <id property="studId" column="stud_id"/>
+        <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="email" column="email"/>
         <association property="address" javaType="com.wefine.mybatis.entity.Address">
-            <id property="addrId" column="addr_id"/>
+            <id property="id" column="id"/>
             <result property="street" column="street"/>
             <result property="city" column="city"/>
             <result property="state" column="state"/>
@@ -47,36 +35,31 @@
         FROM student
     </select>
 
-    <select id="findById" parameterType="Long" resultMap="StudentWithAddress">
+    <select id="findAllWithRef" resultMap="StudentWithAddress">
         SELECT *
         FROM student
-        WHERE stud_id = #{studId}
     </select>
 
-    <select id="selectStudentWithAddress" parameterType="Long" resultMap="StudentWithAddressNestedResultMap">
-        SELECT
-            stud_id,
-            name,
-            email,
-            phone,
-            a.addr_id,
-            street,
-            city,
-            state,
-            zip,
-            country
-        FROM student s LEFT OUTER JOIN address a ON s.addr_id = a.addr_id
-        WHERE stud_id = #{studId}
+    <select id="findById" parameterType="Long" resultMap="StudentResult">
+        SELECT *
+        FROM student
+        WHERE id = #{id}
     </select>
 
-    <insert id="insertStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="studId">
+    <select id="findByIdWithRef" parameterType="Long" resultMap="StudentWithAddress">
+        SELECT *
+        FROM student
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insertStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO student (name, email, addr_id, phone)
-        VALUES (#{name}, #{email}, #{address.addrId}, #{phone})
+        VALUES (#{name}, #{email}, #{address.id}, #{phone})
     </insert>
 
-    <insert id="insertStudentWithMap" parameterType="hashmap" useGeneratedKeys="true" keyProperty="studId">
+    <insert id="insertStudentWithMap" parameterType="HashMap" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO student (name, email, addr_id, phone)
-        VALUES (#{name}, #{email}, #{address.addrId}, #{phone})
+        VALUES (#{name}, #{email}, #{address.id}, #{phone})
     </insert>
 
     <update id="updateStudent" parameterType="Student">
@@ -97,7 +80,7 @@
 
     <delete id="deleteStudent" parameterType="Long">
         DELETE FROM student
-        WHERE stud_id = #{studId}
+        WHERE id = #{studId}
     </delete>
 
 </mapper>

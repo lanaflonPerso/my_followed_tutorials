@@ -24,8 +24,22 @@ public class StudentMapperTests {
     }
 
     @Test
-    public void test02FindById() {
+    public void test02FindAllWithRef() {
+        List<Student> students = mapper.findAllWithRef();
+
+        System.out.println(students);
+    }
+
+    @Test
+    public void test03FindById() {
         Student student = mapper.findById(1L);
+
+        System.out.println(student);
+    }
+
+    @Test
+    public void test04FindByIdWithRef() {
+        Student student = mapper.findByIdWithRef(1L);
 
         System.out.println(student);
     }

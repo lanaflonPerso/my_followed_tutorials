@@ -13,7 +13,7 @@ import java.util.List;
 public class Tutor implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long tutorId;
+    private Long id;
     private String name;
     private String email;
     private Address address;

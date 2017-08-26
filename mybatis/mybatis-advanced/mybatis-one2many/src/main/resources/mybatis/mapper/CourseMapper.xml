@@ -8,7 +8,7 @@
     <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="false"/>
 
     <resultMap id="CourseResult" type="com.wefine.mybatis.entity.Course">
-        <id column="course_id" property="courseId"/>
+        <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="description" property="description"/>
         <result column="start_date" property="startDate"/>
@@ -18,7 +18,7 @@
     <select id="findById" parameterType="Long" resultMap="CourseResult">
         SELECT *
         FROM course
-        WHERE course_id = #{courseId}
+        WHERE id = #{id}
     </select>
 
     <select id="findByTutorId" parameterType="Long" resultMap="CourseResult">
@@ -29,7 +29,7 @@
 
     <select id="searchCourses" parameterType="HashMap" resultMap="CourseResult" useCache="false">
         SELECT * FROM COURSE
-        WHERE TUTOR_ID= #{tutorId}
+        WHERE tutor_id= #{tutorId}
         <if test="courseName != null">
             AND name like #{courseName}
         </if>

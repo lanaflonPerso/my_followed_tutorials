@@ -1,6 +1,5 @@
 package com.wefine.mybatis.mapper;
 
-import com.wefine.mybatis.entity.Address;
 import com.wefine.mybatis.entity.Course;
 import org.junit.Test;
 import org.junit.runner.RunWith;

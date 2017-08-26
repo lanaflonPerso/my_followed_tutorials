@@ -14,20 +14,20 @@ import java.io.Serializable;
 public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long addrId;
+    private Long id;
     private String street;
     private String city;
     private String state;
     private String zip;
     private String country;
 
-    public Address(Long addrId) {
-        this.addrId = addrId;
+    public Address(Long id) {
+        this.id = id;
     }
 
-    public Address(Long addrId, String street, String city, String state,
+    public Address(Long id, String street, String city, String state,
                    String zip, String country) {
-        this.addrId = addrId;
+        this.id = id;
         this.street = street;
         this.city = city;
         this.state = state;
