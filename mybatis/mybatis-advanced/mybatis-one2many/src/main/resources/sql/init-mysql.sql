@@ -8,7 +8,7 @@ USE mybatis;
 
 CREATE TABLE address
 (
-    id BIGINT      NOT NULL AUTO_INCREMENT,
+    id      BIGINT      NOT NULL AUTO_INCREMENT,
     street  VARCHAR(50) NOT NULL,
     city    VARCHAR(50) NOT NULL,
     state   VARCHAR(50) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE address
 
 CREATE TABLE student
 (
-    id BIGINT      NOT NULL AUTO_INCREMENT,
+    id      BIGINT      NOT NULL AUTO_INCREMENT,
     name    VARCHAR(50) NOT NULL,
     email   VARCHAR(50) NOT NULL,
     phone   VARCHAR(15)          DEFAULT NULL,
@@ -39,15 +39,15 @@ CREATE TABLE student
 
 CREATE TABLE tutor
 (
-    id BIGINT      NOT NULL AUTO_INCREMENT,
-    name     VARCHAR(50) NOT NULL,
-    email    VARCHAR(50) NOT NULL,
-    phone    VARCHAR(15)          DEFAULT NULL,
-    dob      DATE                 DEFAULT NULL,
-    gender   VARCHAR(6)           DEFAULT NULL,
-    bio      LONGTEXT             DEFAULT NULL,
-    pic      BLOB                 DEFAULT NULL,
-    addr_id  BIGINT               DEFAULT NULL,
+    id      BIGINT      NOT NULL AUTO_INCREMENT,
+    name    VARCHAR(50) NOT NULL,
+    email   VARCHAR(50) NOT NULL,
+    phone   VARCHAR(15)          DEFAULT NULL,
+    dob     DATE                 DEFAULT NULL,
+    gender  VARCHAR(6)           DEFAULT NULL,
+    bio     LONGTEXT             DEFAULT NULL,
+    pic     BLOB                 DEFAULT NULL,
+    addr_id BIGINT               DEFAULT NULL,
     PRIMARY KEY (id),
     UNIQUE KEY UK_EMAIL (email),
     CONSTRAINT FK_TUTORS_ADDR FOREIGN KEY (addr_id) REFERENCES address (id)
@@ -58,7 +58,7 @@ CREATE TABLE tutor
 
 CREATE TABLE course
 (
-    id   BIGINT       NOT NULL AUTO_INCREMENT,
+    id          BIGINT       NOT NULL AUTO_INCREMENT,
     name        VARCHAR(100) NOT NULL,
     description VARCHAR(512)          DEFAULT NULL,
     start_date  DATE                  DEFAULT NULL,
@@ -73,9 +73,10 @@ CREATE TABLE course
 
 CREATE TABLE course_enrollment
 (
+    id        BIGINT NOT NULL AUTO_INCREMENT,
     course_id BIGINT NOT NULL,
     stud_id   BIGINT NOT NULL,
-    PRIMARY KEY (course_id, stud_id),
+    PRIMARY KEY (id),
     CONSTRAINT FK_ENROLLMENT_STUD FOREIGN KEY (stud_id) REFERENCES student (id),
     CONSTRAINT FK_ENROLLMENT_COURSE FOREIGN KEY (course_id) REFERENCES course (id)
 )
