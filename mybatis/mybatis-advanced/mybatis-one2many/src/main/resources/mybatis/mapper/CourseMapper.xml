@@ -28,7 +28,7 @@
     </select>
 
     <select id="searchCourses" parameterType="HashMap" resultMap="CourseResult" useCache="false">
-        SELECT * FROM COURSE
+        SELECT * FROM course
         WHERE tutor_id= #{tutorId}
         <if test="courseName != null">
             AND name like #{courseName}
@@ -43,7 +43,7 @@
     </select>
 
     <select id="searchCoursesByTutors" parameterType="HashMap" resultMap="CourseResult">
-        SELECT * FROM COURSE
+        SELECT * FROM course
         <if test="tutorIds != null">
             <where>
                 tutor_id IN
