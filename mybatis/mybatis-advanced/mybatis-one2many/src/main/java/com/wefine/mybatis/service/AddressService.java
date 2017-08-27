@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.wefine.mybatis.entity.Address;
 import com.wefine.mybatis.mapper.AddressMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,5 +22,12 @@ public class AddressService {
         Page<Address> page = PageHelper.startPage(pageNum, pageSize).doSelectPage(() -> mapper.findAll());
 
         return page.getResult();
+    }
+
+    @Transactional
+    public Address insert(Address address) {
+        mapper.insert(address);
+
+        return address;
     }
 }

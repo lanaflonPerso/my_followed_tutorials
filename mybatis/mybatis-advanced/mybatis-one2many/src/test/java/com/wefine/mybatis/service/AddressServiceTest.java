@@ -17,6 +17,20 @@ public class AddressServiceTest {
     private AddressService service;
 
     @Test
+    public void testInsert() {
+        Address address = new Address();
+        address.setCity("HK");
+        address.setCountry("CN");
+        address.setState("HK");
+        address.setStreet("TLW 1234 street");
+        address.setZip("32884");
+
+        service.insert(address);
+
+        System.out.println(address);
+    }
+
+    @Test
     public void testPaging() {
         List<Address> list = service.paging(1, 2);
         System.out.println("====");

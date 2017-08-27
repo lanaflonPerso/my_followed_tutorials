@@ -14,6 +14,11 @@
         <result property="country" column="country"/>
     </resultMap>
 
+    <insert id="insert" parameterType="Address" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO address (street, city, state, zip, country)
+        VALUES (#{street}, #{city}, #{state}, #{zip}, #{country})
+    </insert>
+
     <select id="findById" parameterType="Long" resultMap="AddressResult">
         SELECT *
         FROM address

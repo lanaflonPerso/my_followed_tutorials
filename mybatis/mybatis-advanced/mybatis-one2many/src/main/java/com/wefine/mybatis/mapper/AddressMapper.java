@@ -13,4 +13,6 @@ public interface AddressMapper {
     List<Address> findAll();
 
     Address findById(Long id);
+
+    void insert(Address address);
 }
