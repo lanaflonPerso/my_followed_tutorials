@@ -66,7 +66,7 @@ public class ReactorSimpleTest {
         Flux<String> b = Flux.just("let's get", "the party", "started")
                 .delaySubscription(Duration.ofMillis(400));
 
-        Flux.firstEmitting(a, b)
+        Flux.first(a, b)
                 .toIterable()
                 .forEach(System.out::println);
     }
