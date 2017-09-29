@@ -93,7 +93,7 @@
             </plugin>
         </plugins>
 
-        <finalName>zxwas-ftp</finalName>
+        <finalName>ftp</finalName>
     </build>
 
 </project>

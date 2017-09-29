@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<ruleset name="rules"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+    <!-- 描述规则 -->
+    <description>PMD rules</description>
+
+    <!-- 基础规则集 -->
+    <rule ref="rulesets/java/basic.xml">
+        <!-- 不包含避免使用IP硬编码规则 -->
+        <exclude name="AvoidUsingHardCodedIP"/>
+        <!-- 不包含检查ResultSet -->
+        <exclude name="CheckResultSet"/>
+        <!-- 不包含避免线程组 -->
+        <exclude name="AvoidThreadGroup"/>
+        <!-- 不包含在循环的最后使用分支语句 -->
+        <exclude name="AvoidBranchingStatementAsLastInLoop"/>
+    </rule>
+
+    <!-- String规则集 -->
+    <rule ref="rulesets/java/strings.xml">
+        <!-- 不包含避免重复的字面量 -->
+        <exclude name="AvoidDuplicateLiterals"/>
+    </rule>
+
+    <!-- 未使用的私有变量规范[已声明或者赋值但未使用] -->
+    <rule ref="rulesets/java/unusedcode.xml/UnusedPrivateField"/>
+    <!-- 未使用的本地变量规范[已声明或者赋值但未使用] -->
+    <rule ref="rulesets/java/unusedcode.xml/UnusedLocalVariable"/>
+    <!-- 未使用的私有方法规范[已声明但未使用] -->
+    <rule ref="rulesets/java/unusedcode.xml/UnusedPrivateMethod"/>
+    <!-- 未使用的常规参数规范[避免传递给方法&构造器不使用的参数] -->
+    <rule ref="rulesets/java/unusedcode.xml/UnusedFormalParameter"/>
+    <!-- 避免重复的导入规范 -->
+    <rule ref="rulesets/java/imports.xml/DuplicateImports"/>
+    <!-- 不要引入java.lang包的规范[java.lang是自动引入] -->
+    <rule ref="rulesets/java/imports.xml/DontImportJavaLang"/>
+    <!-- 避免无用的导入语句规范 -->
+    <rule ref="rulesets/java/imports.xml/UnusedImports"/>
+    <!-- 避免从同一个包引入类型的规范 -->
+    <rule ref="rulesets/java/imports.xml/ImportFromSamePackage"/>
+    <!-- 松散耦合规范[避免使用实现类,尽量使用接口替代] -->
+    <rule ref="rulesets/java/typeresolution.xml/LooseCoupling"/>
+    <!-- 存在克隆方法必须实现Cloneable接口的规范 -->
+    <rule ref="rulesets/java/typeresolution.xml/CloneMethodMustImplementCloneable"/>
+    <!-- 避免无用的导入语句规范 -->
+    <rule ref="rulesets/java/typeresolution.xml/UnusedImports"/>
+    <!-- 避免非必要的构造器的规范 -->
+    <rule ref="rulesets/java/controversial.xml/UnnecessaryConstructor"/>
+    <!-- 避免在操作中赋值的规范 -->
+    <rule ref="rulesets/java/controversial.xml/AssignmentInOperand"/>
+    <!-- 避免引入Sun包的规范[因为Sun包不是轻量级的,而且可能更改] -->
+    <rule ref="rulesets/java/controversial.xml/DontImportSun"/>
+    <!-- 避免使用不必要的圆括号的规范[有时表达式被包含在一个不必要的圆括号中(看起来像是函数调用)] -->
+    <rule ref="rulesets/java/controversial.xml/UnnecessaryParentheses"/>
+    <!-- 避免调用垃圾收集器的规范[应该使用JVM去收集垃圾,而非代码本身] -->
+    <rule ref="rulesets/java/controversial.xml/DoNotCallGarbageCollectionExplicitly"/>
+    <!-- 松散耦合规范的规范[避免使用实现类,尽量使用接口替代] -->
+    <rule ref="rulesets/java/coupling.xml/LooseCoupling"/>
+    <!-- 尽量使用简化Boolean的规范[在返回Boolean之尽量不要使用if判断] -->
+    <rule ref="rulesets/java/design.xml/SimplifyBooleanReturns"/>
+    <!-- 尽量使用简化Boolean的规范[避免Boolean之间无用的比较] -->
+    <rule ref="rulesets/java/design.xml/SimplifyBooleanExpressions"/>
+    <!-- Switch语句中应该含有default代码块的规范 -->
+    <rule ref="rulesets/java/design.xml/SwitchStmtsShouldHaveDefault"/>
+    <!-- 避免深度嵌套的If语句表达式的规范 -->
+    <rule ref="rulesets/java/design.xml/AvoidDeeplyNestedIfStmts"/>
+    <!-- 避免给参数重新赋值的规范[传入值是什么就是什么,如需操作请使用临时本地变量] -->
+    <rule ref="rulesets/java/design.xml/AvoidReassigningParameters"/>
+    <!-- 避免使用构造器调用可重写的方法的规范 -->
+    <rule ref="rulesets/java/design.xml/ConstructorCallsOverridableMethod"/>
+    <!-- 存取器类生成的规范 -->
+    <rule ref="rulesets/java/design.xml/AccessorClassGeneration"/>
+    <!-- Final类型的域同时可以是Static类型的规范 -->
+    <rule ref="rulesets/java/design.xml/FinalFieldCouldBeStatic"/>
+    <!-- 关闭资源的规范[使用过后必须关闭资源,否则浪费性能] -->
+    <rule ref="rulesets/java/design.xml/CloseResource"/>
+    <!-- 非静态初始化器的规范 -->
+    <rule ref="rulesets/java/design.xml/NonStaticInitializer"/>
+    <!-- 尽量在Switch代码块中Default块最后书写的规范 -->
+    <rule ref="rulesets/java/design.xml/DefaultLabelNotLastInSwitchStmt"/>
+    <!-- 避免Switch表达式中没有Case标签的规范 -->
+    <rule ref="rulesets/java/design.xml/NonCaseLabelInSwitchStatement"/>
+    <!-- 优化toArray调用的规范 -->
+    <rule ref="rulesets/java/design.xml/OptimizableToArrayCall"/>
+    <!-- 避免错误比较的规范 -->
+    <rule ref="rulesets/java/design.xml/BadComparison"/>
+    <!-- 避免equals()方法和null值做比较的规范 -->
+    <rule ref="rulesets/java/design.xml/EqualsNull"/>
+    <!-- 避免通过getclass实例化的规范[使用.class公共属性代替] -->
+    <rule ref="rulesets/java/design.xml/InstantiationToGetClass"/>
+    <!-- 避免幂等性操作[例如同样的方法执行多少次和其第一次执行的结果都相同] -->
+    <rule ref="rulesets/java/design.xml/IdempotentOperations"/>
+    <!-- 不变域的规范 -->
+    <rule ref="rulesets/java/design.xml/ImmutableField"/>
+    <!-- 避免在Final类中使用Protected修饰符的规范 -->
+    <rule ref="rulesets/java/design.xml/AvoidProtectedFieldInFinalClass"/>
+    <!-- 避免在Switch代码块中不使用Break的规范[容易出现Bug] -->
+    <rule ref="rulesets/java/design.xml/MissingBreakInSwitch"/>
+    <!-- 尽量使用NotifyAll代替Notify的规范[如果多个线程在监控中,这时候的线程选择是随机的] -->
+    <rule ref="rulesets/java/design.xml/UseNotifyAllInsteadOfNotify"/>
+    <!-- 避免在Catch代码块中使用Instance of的规范 -->
+    <rule ref="rulesets/java/design.xml/AvoidInstanceofChecksInCatchClause"/>
+    <!-- 尽量简化条件的规范 -->
+    <rule ref="rulesets/java/design.xml/SimplifyConditional"/>
+    <!-- 尽量使用equals进行对象相等性的比较的规范[避免使用"=="来比较] -->
+    <rule ref="rulesets/java/design.xml/CompareObjectsWithEquals"/>
+    <!-- 尽量把字面量放在比较式的前面的规范[可以避免空指针异常] -->
+    <rule ref="rulesets/java/design.xml/PositionLiteralsFirstInComparisons"/>
+    <!-- 避免在返回之前创建不必要的本地变量的规范[直接Return回去就好,不需要创建本地变量来赋值] -->
+    <rule ref="rulesets/java/design.xml/UnnecessaryLocalBeforeReturn"/>
+    <!-- 避免常量接口的规范 -->
+    <rule ref="rulesets/java/design.xml/ConstantsInInterface"/>
+    <!-- 避免同步静态的DateFormat类的规范[如要同步请加锁] -->
+    <rule ref="rulesets/java/design.xml/UnsynchronizedStaticDateFormatter"/>
+    <!-- 尽量保留追踪栈的操作的规范[在Catch中抛出新的异常而不把原始异常传递给新的异常会丢失信息] -->
+    <rule ref="rulesets/java/design.xml/PreserveStackTrace"/>
+    <!-- 尽量使用集合类的isEmpty()方法的规范[不要使用size()或者是0来判断] -->
+    <rule ref="rulesets/java/design.xml/UseCollectionIsEmpty"/>
+    <!-- 当一个类只包含私有的构造器时候应该是Final的规范 -->
+    <rule ref="rulesets/java/design.xml/ClassWithOnlyPrivateConstructorsShouldBeFinal"/>
+    <!-- 尽量使用单数的域的规范 -->
+    <rule ref="rulesets/java/design.xml/SingularField"/>
+    <!-- 避免调用finalize:Object.finalize()方法的规范 -->
+    <rule ref="rulesets/java/finalizers.xml/AvoidCallingFinalize"/>
+    <!-- 尽量简化布尔断言的规范 -->
+    <rule ref="rulesets/java/junit.xml/SimplifyBooleanAssertion"/>
+    <!-- 尽量使用AssertNull替代AssertTrue的规范 -->
+    <rule ref="rulesets/java/junit.xml/UseAssertNullInsteadOfAssertTrue"/>
+    <!-- 尽量使用AssertSame替代AssertTrue的规范 -->
+    <rule ref="rulesets/java/junit.xml/UseAssertSameInsteadOfAssertTrue"/>
+    <!-- 尽量使用AssertEquals替代AssertTrue的规范 -->
+    <rule ref="rulesets/java/junit.xml/UseAssertEqualsInsteadOfAssertTrue"/>
+    <!-- 尽量使用AssertEquals替代AssertTrue的规范 -->
+    <rule ref="rulesets/java/junit.xml/UnnecessaryBooleanAssertion"/>
+    <!-- 避免使用异常用作流程控制的规范 -->
+    <rule ref="rulesets/java/strictexception.xml/ExceptionAsFlowControl"/>
+    <!-- 避免捕获空指针异常的规范[可能会导致更多的错误] -->
+    <rule ref="rulesets/java/strictexception.xml/AvoidCatchingNPE"/>
+    <!-- 避免抛出空指针异常的规范[考虑用IllegalArgumentException代替] -->
+    <rule ref="rulesets/java/strictexception.xml/AvoidThrowingNullPointerException"/>
+    <!-- 避免继承java.lang.error的规范[error是系统异常,不要继承它] -->
+    <rule ref="rulesets/java/strictexception.xml/DoNotExtendJavaLangError"/>
+    <!-- 避免在Finally块中抛出异常的规范[会导致不稳定] -->
+    <rule ref="rulesets/java/strictexception.xml/DoNotThrowExceptionInFinally"/>
+    <!-- 避免抛出同类异常的规范 -->
+    <rule ref="rulesets/java/strictexception.xml/AvoidThrowingNewInstanceOfSameException"/>
+</ruleset>
