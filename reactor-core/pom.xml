@@ -11,15 +11,10 @@
 
     <artifactId>reactor-core</artifactId>
 
-    <properties>
-        <reactor.version>3.1.0.RELEASE</reactor.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>${reactor.version}</version>
         </dependency>
 
         <dependency>
@@ -27,6 +22,47 @@
             <artifactId>assertj-core</artifactId>
         </dependency>
 
-    </dependencies>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <version>3.1.0.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
 
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <includes>
+                        <include>io/pivotal/literx/*.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-bom</artifactId>
+                <version>Bismuth-M2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
