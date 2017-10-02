@@ -16,16 +16,12 @@ public class Part02MonoTest {
 
 	Part02Mono workshop = new Part02Mono();
 
-//========================================================================================
-
 	@Test
 	public void empty() {
 		Mono<String> mono = workshop.emptyMono();
 		StepVerifier.create(mono)
 				.verifyComplete();
 	}
-
-//========================================================================================
 
 	@Test
 	public void noSignal() {
@@ -38,8 +34,6 @@ public class Part02MonoTest {
 				.verify();
 	}
 
-//========================================================================================
-
 	@Test
 	public void fromValue() {
 		Mono<String> mono = workshop.fooMono();
@@ -47,8 +41,6 @@ public class Part02MonoTest {
 				.expectNext("foo")
 				.verifyComplete();
 	}
-
-//========================================================================================
 
 	@Test
 	public void error() {

@@ -14,8 +14,6 @@ public class Part01FluxTest {
 
 	Part01Flux workshop = new Part01Flux();
 
-//========================================================================================
-
 	@Test
 	public void empty() {
 		Flux<String> flux = workshop.emptyFlux();
@@ -23,8 +21,6 @@ public class Part01FluxTest {
 		StepVerifier.create(flux)
 				.verifyComplete();
 	}
-
-//========================================================================================
 
 	@Test
 	public void fromValues() {
@@ -34,8 +30,6 @@ public class Part01FluxTest {
 				.verifyComplete();
 	}
 
-//========================================================================================
-
 	@Test
 	public void fromList() {
 		Flux<String> flux = workshop.fooBarFluxFromList();
@@ -44,16 +38,12 @@ public class Part01FluxTest {
 				.verifyComplete();
 	}
 
-//========================================================================================
-
 	@Test
 	public void error() {
 		Flux<String> flux = workshop.errorFlux();
 		StepVerifier.create(flux)
 				.verifyError(IllegalStateException.class);
 	}
-
-//========================================================================================
 
 	@Test
 	public void countEach100ms() {
