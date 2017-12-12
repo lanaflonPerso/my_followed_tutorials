@@ -10,9 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wefine.tutorials.springboot</groupId>
-    <artifactId>springboot-multi-config</artifactId>
+    <artifactId>deepin</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>deepin-01-aop</module>
+    </modules>
 
-    <properties>
-        <maven.test.skip>true</maven.test.skip>
-    </properties>
+
 </project>
