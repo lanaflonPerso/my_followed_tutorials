@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:we="http://www.wefine.com/schema/we"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.wefine.com/schema/we
+        http://www.wefine.com/schema/we/we.xsd">
+
+    <we:df id="defaultDateFormat" pattern="yyyy-MM-dd HH:mm" lenient="true"/>
+
+    <bean class="com.wefine.spring.config.TimerConfig">
+        <property name="dateFormat">
+            <we:df pattern="yyyy-MM-dd HH:mm:ss"/>
+        </property>
+    </bean>
+</beans>
