@@ -12,6 +12,7 @@
     <modules>
         <module>custom-tags-refdoc</module>
         <module>custom-tags-service</module>
+        <module>custom-tags-we</module>
     </modules>
 
     <properties>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:we="http://www.wefine.com/schema/we"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.wefine.com/schema/we
+        http://www.wefine.com/schema/we/we.xsd">
+
+    <bean class="com.wefine.core.config.ResourceConfig"
+          we:service="we.service"
+          we:remoting="we.remoting"/>
+</beans>
